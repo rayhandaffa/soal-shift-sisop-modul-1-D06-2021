@@ -14,7 +14,7 @@ BEGIN{FS="\t"}
 }
 
 END {
-  printf("Transaksi terakhir dengan profit percentage terbesar yaitu %d dengan persentase %d%%.\n", barisID, maks);
+  printf("Transaksi terakhir dengan profit percentage terbesar yaitu %.1f dengan persentase %.1f%%.\n", barisID, maks);
 }' /home/rayhandapis/Downloads/Laporan-TokoShiSop.tsv > hasil.txt
 #export LC_ALL=
 
@@ -51,7 +51,31 @@ END {
      		segmentMinimal = segment
             }
        	}
-  printf("\nTipe segmen customer yang penjualannya paling sedikit adalah %s dengan %d transaksi.",  segment, minPenjualan);
+  printf("\nTipe segmen customer yang penjualannya paling sedikit adalah %s dengan %.1f transaksi.\n",  segment, minPenjualan);
 #printf(%s", segment);
 }' /home/rayhandapis/Downloads/Laporan-TokoShiSop.tsv >> hasil.txt
 
+#2d
+export LC_ALL=C
+awk '
+BEGIN{FS="\t"}
+{
+ if(NR!=1)
+   {
+     listGabungan[$13]+=$21
+   }
+}
+
+END {
+    profitMinimum=5000
+    for(region in listGabungan)
+    {
+      if(listGabungan[region] < profitMinimum)
+	{
+	   listGabungan[region] = profitMinimum
+           regionMinimum = region
+        }
+    }
+printf("\nWilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah %s dengan total keuntungan %.1f\n", region ,profitMinimum);
+#printf("%.1f", listGabungan[region]);
+}' /home/rayhandapis/Downloads/Laporan-TokoShiSop.tsv >> hasil.txt
