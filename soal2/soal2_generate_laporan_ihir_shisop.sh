@@ -31,4 +31,27 @@ END {
        {printf ("%s\n", customer)}}
 }' /home/rayhandapis/Downloads/Laporan-TokoShiSop.tsv >> hasil.txt 
 
+#2c 
+awk '
+BEGIN{FS="\t"}
+{
+ if(NR>1)
+   {
+      listSeg[$8]++
+   }
+}
+
+END {
+    minPenjualan=5000
+    for(segment in listSeg)
+	{
+          if(listSeg[segment] < minPenjualan)
+	    {
+		minPenjualan = listSeg[segment]
+     		segmentMinimal = segment
+            }
+       	}
+  printf("\nTipe segmen customer yang penjualannya paling sedikit adalah %s dengan %d transaksi.",  segment, minPenjualan);
+#printf(%s", segment);
+}' /home/rayhandapis/Downloads/Laporan-TokoShiSop.tsv >> hasil.txt
 
