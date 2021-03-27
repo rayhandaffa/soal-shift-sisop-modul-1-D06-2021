@@ -34,3 +34,5 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
 - **Penjelasan dan Penyelesaian Soal 2d**
 
 - **Penjelasan dan Penyelesaian Soal 2e**
+
+## Penjelasan dan Penyelesaian Soal 3
