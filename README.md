@@ -26,7 +26,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
       {maks=presentasiprofit;barisID=$ID}
    }
    ```
-   Sesuai syntax diatas dapat diartikan apabila kondisi value percent terbesar lebih kecil dibanding value persentaseprofit (Percentage Profit) maka, value yang menyimpan nilai perhitungan persentaseprofit akan disimpan di dalam sebuah variable "maks" lalu akan menyimpan IDnya. lalu pada bagian `END { }' `akan memprintf-kan hasil perhitungan dengan persentase maksimalnya. <br>
+   Sesuai syntax diatas dapat diartikan apabila kondisi value percent terbesar lebih kecil dibanding value persentaseprofit (Percentage Profit) maka, value yang menyimpan nilai perhitungan persentaseprofit akan disimpan di dalam sebuah variable "maks" lalu akan menyimpan IDnya. lalu pada bagian `END { }' /home/rayhandaffa/Downloads/Laporan-TokoShisop.tsv`akan memprintf-kan hasil perhitungan dengan persentase maksimalnya. Serta `Laporan-TokoShisop.tsv` merupakan nama file yang akan menjadi input pada soal ini<br>
 - **Penjelasan dan Penyelesaian Soal 2b**
   
 - **Penjelasan dan Penyelesaian Soal 2c**
