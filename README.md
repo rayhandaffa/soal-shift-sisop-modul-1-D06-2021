@@ -70,3 +70,30 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
 - **Penjelasan dan Penyelesaian Soal 2e**<br>
 
 ## Penjelasan dan Penyelesaian Soal 3
+- **Penjelasan dan Penyelesaian Soal 3a**<br>
+  Pada program ini, pertama-tama, dibuat dua variabel yang menyatakan jumlah download maksimum dan nomor gambar. Berikutnya dilakukan iterasi selama belum mencapai banyak download maksimum dan selama gambar kurang dari 23.
+  ```
+  for((i=1;i<=count && image<=23;i=i+1))
+  do
+  ```
+  Untuk mendownload file gambar pada link tersebut, digunakan command wget, kemudian log hasil gambar tadi diatur sedemikian agar disimpan dalam file Foto.log, serta beri nama file gambar tersebut dengan newKitten.
+  ```
+  wget "https://loremflickr.com/320/240/kitten" -a Foto.log -O newKitten
+  ```
+  Sejak iterasi kedua, file gambar yang di-download dibandingkan dengan file gambar pertama menggunakan perintah cmp. Perintah ini memungkinkan untuk membandingkan dua file dari jenis apa pun dan menulis hasilnya ke output standar.
+  ```
+  reduplicate=`cmp $prevKitten newKitten -b`
+  ```
+  Jika setelah dicek ternyata ada duplikasi, maka file gambar newKitten yang sudah di-download akan dihapus menggunakan perintah rm. Namun jika tidak, maka file newKitten akan diganti namanya dan disimpan di folder.
+  ```
+  if [ $duplicate -eq 1 ]
+  then
+      rm newKitten
+  else
+      mv newKitten `printf "Koleksi_%02d" "$image"`
+      image=$((image+1))
+  fi
+  ```
+  Program ini dijalankan berulang kali hingga total 23 gambar telah diperoleh dan ketika jumlah download maksimum telah tercapai.
+ 
+- **Penjelasan dan Penyelesaian Soal 3b**<br>
