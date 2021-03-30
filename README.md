@@ -76,11 +76,11 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   for((i=1;i<=count && image<=23;i=i+1))
   do
   ```
-  Untuk mendownload file gambar pada link tersebut, digunakan command wget, kemudian log hasil gambar tadi diatur sedemikian agar disimpan dalam file Foto.log, serta beri nama file gambar tersebut dengan newKitten.
+  Untuk mendownload file gambar pada link tersebut, digunakan command `wget`, kemudian log hasil gambar tadi diatur sedemikian agar disimpan dalam file Foto.log, serta beri nama file gambar tersebut dengan newKitten.
   ```
   wget "https://loremflickr.com/320/240/kitten" -a Foto.log -O newKitten
   ```
-  Sejak iterasi kedua, file gambar yang di-download dibandingkan dengan file gambar pertama menggunakan perintah cmp. Perintah ini memungkinkan untuk membandingkan dua file dari jenis apa pun dan menulis hasilnya ke output standar.
+  Sejak iterasi kedua, file gambar yang di-download dibandingkan dengan file gambar pertama menggunakan perintah `cmp`. Perintah ini memungkinkan untuk membandingkan dua file dari jenis apa pun dan menulis hasilnya ke output standar.
   ```
   reduplicate=`cmp $prevKitten newKitten -b`
   ```
