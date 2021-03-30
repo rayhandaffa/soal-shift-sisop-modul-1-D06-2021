@@ -6,7 +6,14 @@ Kelompok :
 3. Rayhan Daffa Alhafish - 05111940000227
 
 ## Penjelasan dan Penyelesaian Soal 1
-
+ - **Penjelasan dan Penyelesaian Soal 1a**<br>
+ 
+ - **Penjelasan dan Penyelesaian Soal 1b**<br>
+ 
+ - **Penjelasan dan Penyelesaian Soal 1c**<br>
+ 
+ - **Penjelasan dan Penyelesaian Soal 1d**<br>
+ 
 ## Penjelasan dan Penyelesaian Soal 2
 Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dapat kita ambil datanya berdasarkan beberapa kondisi antara lain akan dijelaskan dalam penjelasan soal<br>
  - **Penjelasan dan Penyelesaian Soal 2a**<br> 
@@ -36,7 +43,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
      {listCustomer[$7]++}
   }
   ```
-  Berdasarkan potongan *coding*an, pada soal 2b menggunakan *`if`(condition)* untuk memeriksa dan menemukan data-data dari tabel data `Laporan-TokoShisop.tsv`. Untuk `$2~"2017` artinya pada tabel data tersebut ada sebuah kolom bernama `Order ID` dan berisi tanggal dimana order itu dibuat dan pada soal ini hanya menampilkan data-data pada tahun 2017. Selanjutnya, untuk `$10=="Albuquerque"` dimana artinya terdapat sebuat kolom `City` dan hanya menampilkan kota bernama Albuquerque. Lalu, ketika `nama customer` yang sesuai dengan ketentuan udah di dapatkan lalu nama-nama tesebut akan simpan di sebuah array bernama `listCustomer{$7}++` dimana `$7` ini merupakan sebuah kolom bernama `Customer Name` dan terdapat sebuah iterasi digunakan untuk menampilkan semua nama pada array sesuai format atau ketentuan. <br>
+  Berdasarkan potongan *coding*an, pada soal 2b menggunakan *`if`(condition)* untuk memeriksa dan menemukan data-data dari tabel data `Laporan-TokoShisop.tsv`. Untuk `$2~"2017"` artinya pada tabel data tersebut ada sebuah kolom bernama `Order ID` dan berisi tanggal dimana order itu dibuat dan pada soal ini hanya menampilkan data-data pada tahun 2017. Selanjutnya, untuk `$10=="Albuquerque"` dimana artinya terdapat sebuat kolom `City` dan hanya menampilkan kota bernama Albuquerque. Lalu, ketika `nama customer` yang sesuai dengan ketentuan udah di dapatkan lalu nama-nama tesebut akan simpan di sebuah array bernama `listCustomer{$7}++` dimana `$7` ini merupakan sebuah kolom bernama `Customer Name` dan terdapat sebuah iterasi digunakan untuk menampilkan semua nama pada array sesuai format atau ketentuan. <br>
   
 - **Penjelasan dan Penyelesaian Soal 2c**<br>
    Pada kondisi soal 2c kita diminta untuk menampilkan data dengan ketentuan segment dengan jumlah transaksi paling sedikit. Cara pertama untuk dapat menyelesaikannya yaitu pertama menghitung jumlah transaksi pada masing-masing segment customer. 
@@ -66,9 +73,41 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   ```
   Jika jumlah transaksi dari suatu segment lebih kecil dibandingkan transaksi yang disimpan (`minPenjualan`) maka jumlah transaksi (`listSeg[segment]`) dan index (`segment`) akan disimpan dalam variabel `segment` dan `minPenjualan`. Kemudian, hasilnya akan di cetak sesuai format.<br>
 - **Penjelasan dan Penyelesaian Soal 2d**<br>
+ Pada soal 2d hampir sama dengan 2c tetapi terdapat beberapa perbedaan yang mencolok yaitu dimana pada soal 2d diminta untuk menampilkan wilayah bagian yang memiliki total keuntungan (profit) yang paling sedikit. Sama seperti dengan di 2c hal yang paling utama adalah menghitung profit di masing-masing region. 
+ 
+ ```
+ {
+   if(NR!=1)
+    {
+      listGabungan[$13]+=$21
+    }
+ 
+ }
+ ```
+ Terdapat sebuah array `listGabungan` dengan index = kolom `region` yang berada di kolom 13 (`$13`). Akumulasi keuntungan masing-masing region dihitung dengan menggunakan `listGabungan[$13]+=$21` yang dimana `$21` merupakan sebuah kolom yang merujuk `Profit`. 
+ 
+ ```
+ {
+   profitMinimun=5000
+   for(region in listGabungan)
+    {
+       if(listGabungan[region] < profitMinimum)
+         {
+            listGabungan[region] = profitMinimum
+            regionMinimum = region
+         }
+    }
+    printf ("\nWilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah  %s dengan total %.1f\n", region, profitMinimum);
+ }
+ ```
+ Potongan program ini dijalankan guna untuk menge-*check* dan mencari jumlah profit atau keuntungan di masing-masing wilayah(region). Jika total keuntungan dari suatu region lebih kecil dibandingkan nilai yang disimpan maka akan tercetak sebuah index bernama `region` dan sebuah total keuntungan yang paling kecil bernama `profitMinimum`.
  
 - **Penjelasan dan Penyelesaian Soal 2e**<br>
+Pada soal 2e meminta kita untuk membuat script hasil dari soal 2a, 2b, 2c, dan 2d yang disimpan ke `hasil.txt`. Dapat dilihat seperti dibawah ini: <br>
 
+![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/hasil%2Ctxt.jpg)<br>
+
+  `Laporan-TokoShisop.tsv >> hasil.txt` output semua soal 2 akan ditampilkan pada file `hasil.txt` dengan melakukan redirection untuk mengirim oitput ke file `hasil.txt`. 
 ## Penjelasan dan Penyelesaian Soal 3
 - **Penjelasan dan Penyelesaian Soal 3a**<br>
   Pada program ini, pertama-tama, dibuat dua variabel yang menyatakan jumlah download maksimum dan nomor gambar. Berikutnya dilakukan iterasi selama belum mencapai banyak download maksimum dan selama gambar kurang dari 23.
@@ -97,3 +136,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   Program ini dijalankan berulang kali hingga total 23 gambar telah diperoleh dan ketika jumlah download maksimum telah tercapai.
  
 - **Penjelasan dan Penyelesaian Soal 3b**<br>
+
+- **Penjelasan dan Penyelesaian Soal 3c**<br>
+
+- **Penjelasan dan Penyelesaian Soal 3d**<br>
