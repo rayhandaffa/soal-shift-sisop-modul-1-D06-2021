@@ -69,17 +69,17 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
  - **Penjelasan dan Penyelesaian Soal 1e**<br>
  Pada soal 1e kita diminta untuk membuat file yang berisi data pada poin c yang sudah disatukan dalam file `user_statistic.csv` dengan header Unsername,INFO,ERROR dan diurutkan berdasarkan username secara ascending.<br>
     ```
-       printf 'Username, INFO, ERROR\n' > user_statistic.csv
-       cat syslog.log | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > user.csv
-       cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | grep -Eo '[0-9]{1,}' > countererror.csv
-       cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > usererror.csv
-       cat syslog.log | grep "INFO" | cut -d'(' -f2 | cut -d')' -f1 | sort | uniq -c | grep -Eo '[0-9]{1,}' > counterinfo.csv
-       cat syslog.log | grep "INFO" | cut -d'(' -f2 | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > userinfo.csv
-       while read username
-       do
-          user="$username"
-          info=0
-          error=0
+        printf 'Username, INFO, ERROR\n' > user_statistic.csv
+        cat syslog.log | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > user.csv
+        cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | grep -Eo '[0-9]{1,}' > countererror.csv
+        cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > usererror.csv
+        cat syslog.log | grep "INFO" | cut -d'(' -f2 | cut -d')' -f1 | sort | uniq -c | grep -Eo '[0-9]{1,}' > counterinfo.csv
+        cat syslog.log | grep "INFO" | cut -d'(' -f2 | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > userinfo.csv
+        while read username
+        do
+           user="$username"
+           info=0
+           error=0
   
           paste counterinfo.csv userinfo.csv | (while read countinfo userinfo
           do
@@ -88,7 +88,7 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
              info=$countinfo 
              break
            fi
-          done
+        done
 
          paste countererror.csv usererror.csv | (while read counterror usererror
          do
@@ -108,10 +108,11 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
       rm counterinfo.csv
       rm userinfo.csv
     ```
- Penyelesaian yang dapat dilakukan pertam yaitu membuat file sementara `user.csv` sebagai tempat untung menampung semua nama username yang terdapat pada data. Lalu membuat file sementara `countererror.csv` untuk menyimpan jumlah log error yang dimiliki oleh setiap user dan juga membuat file semetara `usererror.csv` untuk menyimpan nama user yang memiliki log error. Sama seperti error, dibuat juga file sementara `counterinfo.csv` untuk menyimpan jumlah log info yang dimiliki oleh setiap user dan juga membuat file semetara `userinfo.csv` untuk menyimpan nama user yang memiliki log info.<br>
+    Penyelesaian yang dapat dilakukan pertama yaitu membuat file sementara `user.csv` sebagai tempat untung menampung semua nama username yang terdapat pada data. Lalu membuat file sementara `countererror.csv` untuk menyimpan jumlah log error yang dimiliki oleh setiap user dan juga membuat file semetara `usererror.csv` untuk menyimpan nama user yang memiliki log error. Sama seperti error, dibuat juga file sementara `counterinfo.csv` untuk menyimpan jumlah log info yang dimiliki oleh setiap user dan juga membuat file semetara `userinfo.csv` untuk menyimpan nama user yang memiliki log info.<br>
  Setelah data terkumpul, dilakukan nested looping untuk membandingkan username pada `user.csv` dengan file `usererror.csv` dan `userinfo.csv`. Jika barisnya memiliki data yang sama, variable yang menyimpan jumlah info dan error akan diubah berdasarkan pada file `countererror.csv` dan `counterinfo.csv`. Lalu data dimasukkan secara urut ke dalam file `user_statistic.csv`. Setelah seluruh data dimasukkan ke dalam file, hapus semua file sementara yang sudah tidak dibutuhkan. Tampilan pada file `user_statistic.csv` terlihat sebagai berikut:<br>
- ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20csv%201e.png)
+   ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20csv%201e.png)
  
+### **Kendala yang di alami selama mengerjakan soal 2**<br> 
 ## Penjelasan dan Penyelesaian Soal 2
 Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dapat kita ambil datanya berdasarkan beberapa kondisi antara lain akan dijelaskan dalam penjelasan soal<br>
  - **Penjelasan dan Penyelesaian Soal 2a**<br> 
@@ -195,7 +196,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
                  regionMinimum = region
                }
           }
-          printf ("\nWilayah bagian (region) yang memiliki total keuntungan (profit) yang paling    sedikit adalah  %s dengan total %.1f\n", region, profitMinimum);
+          printf ("\nWilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah  %s dengan total %.1f\n", region, listGabungan[region]);
        }
    ```
    Potongan program ini dijalankan guna untuk menge-*check* dan mencari jumlah profit atau keuntungan di masing-masing wilayah(region). Jika total keuntungan dari suatu region lebih kecil dibandingkan nilai yang disimpan maka akan tercetak sebuah index bernama `region` dan sebuah total keuntungan yang paling kecil bernama `profitMinimum`.
@@ -206,6 +207,14 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
    ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/hasil%2Ctxt.jpg)<br>
    
      Di akhir setiap program pada nomer 2a, 2b, 2c, maupun 2d terdapat sebuah syntax `Laporan-TokoShisop.tsv >> hasil.txt` output semua soal 2 akan ditampilkan pada file `hasil.txt` dengan melakukan redirection untuk mengirim output ke file `hasil.txt`. 
+     
+ ### **Kendala yang di alami selama mengerjakan soal 2**<br> 
+ Terdapat beberapa kendala yang kami alami saat mengerjakan soal no 2 kali yaitu :
+ 1. Pada saat mengerjakan soal no 2a kami mengalami beberapa error yaitu ketidaksesuaian saat meng-*run* program yang seharusnya 9952 dengan 100% malah 9964 dan tidak keluar hasil persenannya.
+ 2. Selanjutnya, kami mengalami error ketika menjalankan program 2b karena kami pada soal 2a memakai `\home\rayhandapis\Documents\PraktikumSisop\M1 >> hasil.txt` yang dimana seharusnya menggunakan tanda `>` saja sehingga tidak me-*replace* yang sudah ada.
+ 3. Kemudian pada saat mengerjakan soal no 2b, terdapat error yaitu ketika salah meng*print* hasil yaitu seharusnya hanya beberapa nama yang memiliki data di Kota `Albuquerque` dan pada tahun 2017. Hal ini disebabkan karena terjadinya kesalahan penulisan `City` yang seharusnya `Albuquerque` kami menulisnya `Albequerque`.
+ 4. Pada soal no 2c dan 2d kami memiliki error yang sama yaitu ketika kami menyimpan variabel yang di itung menggunakan variable yang sama. Sehingga, data tersebut tidak tersimpan.
+ 5. Error yang terakhir yang kami alami yaitu ketika mem*print* hasil program nomer 2d salah menggunakan `$d` yang seharusnya `"%.1f` ketika memprint profitMinimum. 
 ## Penjelasan dan Penyelesaian Soal 3
 - **Penjelasan dan Penyelesaian Soal 3a**<br>
   Pada program ini, pertama-tama, dibuat dua variabel yang menyatakan jumlah download maksimum dan nomor gambar. Berikutnya dilakukan iterasi selama belum mencapai banyak download maksimum dan selama gambar kurang dari 23.
@@ -238,3 +247,5 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
 - **Penjelasan dan Penyelesaian Soal 3c**<br>
 
 - **Penjelasan dan Penyelesaian Soal 3d**<br>
+
+### **Kendala yang di alami dalam mengerjakan soal 3** 
