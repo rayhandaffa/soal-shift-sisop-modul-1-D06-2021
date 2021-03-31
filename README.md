@@ -22,7 +22,8 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
     cat syslog.log | grep "ERROR" | cut -d' ' -f7- | cut -d'(' -f1 | sort | uniq -c
     ```
    Berdasarkan syntax diatas, pengerjaan 1b ini mirip dengan 1a namun hanya menampilkan yang error saja oleh karena itu digunakan syntax `grep "ERROR"` dimana nantinya data yang dimunculkan hanya data yang memiliki tulisan "ERROR". Selain itu digunakan syntax ` cut -d' ' -f7- | cut -d'(' -f1 ` dikarenakan posisi keterangan error terdapat pada kata ke-7 sampai dengan sebelum tanda kurung buka, maka selain dibuat batasan di awal, dibuat juga batasan di akhir dimana kata terakhir yang di ambil merupakan kata sebelum tanda kurung buka.<br>
-   Lalu digunakan `sort` unntuk mengurutkan data, agar nantinya data yang memiliki pesan error yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`.<br>
+   Lalu digunakan `sort` unntuk mengurutkan data, agar nantinya data yang memiliki pesan error yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`. Hasil output dapat dilihat sebagai berikut:<br>
+   ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201b.png)<br>
 
  - **Penjelasan dan Penyelesaian Soal 1c**<br>
   Pada soal 1c kita diminta untuk menampilkan log ERROR dan INFO yang terdapat pada setiap usernya.<br>
@@ -30,7 +31,8 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
   ```
   cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c
   ```
-  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, digunakan `grep "ERROR"` karena hanya akan mengambil data errornya saja, lalu dilanjutkan dengan ` cut -d'(' -f2- | cut -d')' -f1 ` untuk mengambil data username saja, karena data username terletak didalam kurung setelah itu digunakan `sort` unntuk mengurutkan data, agar nantinya data error dengan username yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`.<br>
+  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, digunakan `grep "ERROR"` karena hanya akan mengambil data errornya saja, lalu dilanjutkan dengan ` cut -d'(' -f2- | cut -d')' -f1 ` untuk mengambil data username saja, karena data username terletak didalam kurung setelah itu digunakan `sort` unntuk mengurutkan data, agar nantinya data error dengan username yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`. Hasil output dapat dilihat sebagai berikut:<br>
+  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201c.png)<br>
 
  - **Penjelasan dan Penyelesaian Soal 1d**<br>
  Pada soal 1d kita diminta untuk memasukkan data pada soal 1b ke dalam file error_message.csv dengan header Error, Count yag kemunculannya diurutkan berdasarkan jumlah pesan error paling banyak.<br>
@@ -52,7 +54,8 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
      done >> error_message.csv
     ```
     `printf "$f1,$f2\n"` digunakan untuk menampilkan data `f1` dan `f2` yang dibatasi oleh koma setelah itu data dimasukkan ke dalam file `error_message.csv`<br>
-    Hapus file sementara yang sudah tidak dibutuhkan dengan menggunakan `rm message.csv` dan `rm counter.csv`<br>
+    Hapus file sementara yang sudah tidak dibutuhkan dengan menggunakan `rm message.csv` dan `rm counter.csv`. Tampilan pada file `error_message.csv` terlihat sebagai berikut: <br>
+    ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20csv%201d.png)<br>
     
  - **Penjelasan dan Penyelesaian Soal 1e**<br>
  Pada soal 1e kita diminta untuk membuat file yang berisi data pada poin c yang sudah disatukan dalam file `user_statistic.csv` dengan header Unsername,INFO,ERROR dan diurutkan berdasarkan username secara ascending.<br>
