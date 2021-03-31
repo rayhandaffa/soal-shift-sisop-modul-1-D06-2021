@@ -12,7 +12,7 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
     ```
      cat syslog.log | cut -f6- -d' '
     ```
-  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, namun karena terdapat beberapa data yang tidak perlu dimunculkan, dan data yang perlu dimunculkan merupakan kata ke-6 sampai akhir line maka digunakan syntax `cut -f6- -d' '` untuk memotong bagian yang ingin ditampilkan. Syntax tersebut bekerja dengan cara hanya mengambil data dari `f6` sampai akhil line dimana setiap `f` dibatasi dengan spasi. Hasil output dari soal ini dapat dilihat dibawah ini.<br>
+  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, namun karena terdapat beberapa data yang tidak perlu dimunculkan, dan data yang perlu dimunculkan merupakan kata ke-6 sampai akhir line maka digunakan syntax `cut -f6- -d' '` untuk memotong bagian yang ingin ditampilkan. Syntax tersebut bekerja dengan cara hanya mengambil data dari `f6` sampai akhir line dimana setiap `f` dibatasi dengan spasi. Hasil output dari soal ini dapat dilihat dibawah ini.<br>
  
     ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201a.png)<br>
  
@@ -68,6 +68,48 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
     
  - **Penjelasan dan Penyelesaian Soal 1e**<br>
  Pada soal 1e kita diminta untuk membuat file yang berisi data pada poin c yang sudah disatukan dalam file `user_statistic.csv` dengan header Unsername,INFO,ERROR dan diurutkan berdasarkan username secara ascending.<br>
+    ```
+       printf 'Username, INFO, ERROR\n' > user_statistic.csv
+       cat syslog.log | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > user.csv
+       cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | grep -Eo '[0-9]{1,}' > countererror.csv
+       cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > usererror.csv
+       cat syslog.log | grep "INFO" | cut -d'(' -f2 | cut -d')' -f1 | sort | uniq -c | grep -Eo '[0-9]{1,}' > counterinfo.csv
+       cat syslog.log | grep "INFO" | cut -d'(' -f2 | cut -d')' -f1 | sort | uniq -c | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > userinfo.csv
+       while read username
+       do
+          user="$username"
+          info=0
+          error=0
+  
+          paste counterinfo.csv userinfo.csv | (while read countinfo userinfo
+          do
+           if [ "$user" == "$userinfo" ]
+             then 
+             info=$countinfo 
+             break
+           fi
+          done
+
+         paste countererror.csv usererror.csv | (while read counterror usererror
+         do
+         if [ "$user" == "$usererror" ]
+           then 
+           error=$counterror 
+           break
+         fi
+        done
+
+       printf "$user,$info,$error\n" >> user_statistic.csv))
+       done < user.csv
+
+      rm user.csv
+      rm countererror.csv
+      rm usererror.csv
+      rm counterinfo.csv
+      rm userinfo.csv
+    ```
+ Penyelesaian yang dapat dilakukan pertam yaitu membuat file sementara `user.csv` sebagai tempat untung menampung semua nama username yang terdapat pada data. Lalu membuat file sementara `countererror.csv` untuk menyimpan jumlah log error yang dimiliki oleh setiap user dan juga membuat file semetara `usererror.csv` untuk menyimpan nama user yang memiliki log error. Sama seperti error, dibuat juga file sementara `counterinfo.csv` untuk menyimpan jumlah log info yang dimiliki oleh setiap user dan juga membuat file semetara `userinfo.csv` untuk menyimpan nama user yang memiliki log info.
+ Setelah data terkumpul, dilakukan nested looping untuk membandingkan username pada `user.csv` dengan file `usererror.csv` dan `userinfo.csv`. Jika barisnya memiliki data yang sama, variable yang menyimpan jumlah info dan error akan diubah berdasarkan pada file `countererror.csv` dan `counterinfo.csv`. Lalu data dimasukkan secara urut ke dalam file `user_statistic.csv`. Setelah seluruh data dimasukkan ke dalam file, hapus semua file sementara yang sudah tidak dibutuhkan.
  
 ## Penjelasan dan Penyelesaian Soal 2
 Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dapat kita ambil datanya berdasarkan beberapa kondisi antara lain akan dijelaskan dalam penjelasan soal<br>
