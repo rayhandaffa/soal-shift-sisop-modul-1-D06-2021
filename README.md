@@ -9,10 +9,13 @@ Kelompok :
 Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat kita ambil datanya berdasarkan beberapa kondisi antara lain akan dijelaskan dalam penjelasan soal<br>
 - **Penjelasan dan Penyelesaian Soal 1a**<br>
   Pada soal 1a kita diminta untuk menampilkan informasi jenis log, pesan log, dan username pada setiap baris lognya dari file sylog.log dengan menggunakan regex.<br>
- ```
-  cat syslog.log | cut -f6- -d' '
- ```
- Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, namun karena terdapat beberapa data yang tidak perlu dimunculkan, dan data yang perlu dimunculkan merupakan kata ke-6 sampai akhir line maka digunakan syntax `cut -f6- -d' '` untuk memotong bagian yang ingin ditampilkan. Syntax tersebut bekerja dengan cara hanya mengambil data dari `f6` sampai akhil line dimana setiap `f` dibatasi dengan spasi.<br>
+       ```
+          cat syslog.log | cut -f6- -d' '
+       ```
+  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, namun karena terdapat beberapa data yang tidak perlu dimunculkan, dan data yang perlu dimunculkan merupakan kata ke-6 sampai akhir line maka digunakan syntax `cut -f6- -d' '` untuk memotong bagian yang ingin ditampilkan. Syntax tersebut bekerja dengan cara hanya mengambil data dari `f6` sampai akhil line dimana setiap `f` dibatasi dengan spasi. Hasil output dari soal ini dapat dilihat dibawah ini.<br>
+ 
+ ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201a.png)<br>
+ 
  - **Penjelasan dan Penyelesaian Soal 1b**<br>
    Pada soal 1b kita diminta untuk menampilkan jumlah pesan ERROR beserta banyak kemunculannya.<br>
     ```
