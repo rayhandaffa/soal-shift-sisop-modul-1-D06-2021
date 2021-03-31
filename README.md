@@ -14,7 +14,7 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
     ```
   Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, namun karena terdapat beberapa data yang tidak perlu dimunculkan, dan data yang perlu dimunculkan merupakan kata ke-6 sampai akhir line maka digunakan syntax `cut -f6- -d' '` untuk memotong bagian yang ingin ditampilkan. Syntax tersebut bekerja dengan cara hanya mengambil data dari `f6` sampai akhil line dimana setiap `f` dibatasi dengan spasi. Hasil output dari soal ini dapat dilihat dibawah ini.<br>
  
-     ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201a.png)<br>
+    ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201a.png)<br>
  
  - **Penjelasan dan Penyelesaian Soal 1b**<br>
    Pada soal 1b kita diminta untuk menampilkan jumlah pesan ERROR beserta banyak kemunculannya.<br>
@@ -23,39 +23,48 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
     ```
    Berdasarkan syntax diatas, pengerjaan 1b ini mirip dengan 1a namun hanya menampilkan yang error saja oleh karena itu digunakan syntax `grep "ERROR"` dimana nantinya data yang dimunculkan hanya data yang memiliki tulisan "ERROR". Selain itu digunakan syntax ` cut -d' ' -f7- | cut -d'(' -f1 ` dikarenakan posisi keterangan error terdapat pada kata ke-7 sampai dengan sebelum tanda kurung buka, maka selain dibuat batasan di awal, dibuat juga batasan di akhir dimana kata terakhir yang di ambil merupakan kata sebelum tanda kurung buka.<br>
    Lalu digunakan `sort` unntuk mengurutkan data, agar nantinya data yang memiliki pesan error yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`. Hasil output dapat dilihat sebagai berikut:<br>
+   
    ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201b.png)<br>
 
  - **Penjelasan dan Penyelesaian Soal 1c**<br>
   Pada soal 1c kita diminta untuk menampilkan log ERROR dan INFO yang terdapat pada setiap usernya.<br>
   Pertama-tama data yang ditampilkan merupakan jumlah ERROR pada setiap user<br>
-  ```
-  cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c
-  ```
-  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, digunakan `grep "ERROR"` karena hanya akan mengambil data errornya saja, lalu dilanjutkan dengan ` cut -d'(' -f2- | cut -d')' -f1 ` untuk mengambil data username saja, karena data username terletak didalam kurung setelah itu digunakan `sort` unntuk mengurutkan data, agar nantinya data error dengan username yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`. Hasil output dapat dilihat sebagai berikut:<br>
-  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201c.png)<br>
+     ```
+       cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c
+      ```
+    Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, digunakan `grep "ERROR"` karena hanya akan mengambil data errornya saja, lalu dilanjutkan dengan ` cut -d'(' -f2- | cut -d')' -f1 ` untuk mengambil data username saja, karena data username terletak didalam kurung setelah itu digunakan `sort` unntuk mengurutkan data, agar nantinya data error dengan username yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`. Hasil output dapat dilihat sebagai berikut:<br>
+  
+   ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%201c.png)<br>
 
  - **Penjelasan dan Penyelesaian Soal 1d**<br>
  Pada soal 1d kita diminta untuk memasukkan data pada soal 1b ke dalam file error_message.csv dengan header Error, Count yag kemunculannya diurutkan berdasarkan jumlah pesan error paling banyak.<br>
+ 
    ```
-   cat syslog.log | grep "ERROR" | cut -d' ' -f7- | cut -d'(' -f1 | sort | uniq -c | sort -nr | grep -Eo '[0-9]{1,}' > counter.csv
+       cat syslog.log | grep "ERROR" | cut -d' ' -f7- | cut -d'(' -f1 | sort | uniq -c | sort -nr | grep -Eo '[0-9]{1,}' > counter.csv
    ```
- Karena data yang digunakan merupakan data yang sudah diambil pada soal nomor 1b, maka dapat digunakan syntax yang sama namun ditambahkan `sort -nr` untuk mengurutkan data dengan nomor yang paling besar ke paling kecil, lalu digunakan `grep -Eo '[0-9]{1,}' > counter.csv` untuk hanya mengambil data berupa angka yang selanjutnya angka tersebur disimpan ke dalam file sementara `counter.csv`<br>
+   
+   Karena data yang digunakan merupakan data yang sudah diambil pada soal nomor 1b, maka dapat digunakan syntax yang sama namun ditambahkan `sort -nr` untuk mengurutkan data dengan nomor yang paling besar ke paling kecil, lalu digunakan `grep -Eo '[0-9]{1,}' > counter.csv` untuk hanya mengambil data berupa angka yang selanjutnya angka tersebur disimpan ke dalam file sementara `counter.csv`<br>
+ 
     ```
-   cat syslog.log | grep "ERROR" | cut -d' ' -f7- | cut -d'(' -f1 | sort | uniq -c | sort -nr | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > message.csv
+       cat syslog.log | grep "ERROR" | cut -d' ' -f7- | cut -d'(' -f1 | sort | uniq -c | sort -nr | tr -d '[0-9]' | sed -e 's/^[[:space:]]*//' > message.csv
     ```
- Dengan menggunakan metode yang sama namun menggunakan `tr -d '[0-9]' ` untuk tidak mengambil data berupa angka dan menggunakan `sed -e 's/^[[:space:]]*//' > message.csv` untuk menghapus spasi pada awal kalimat pesan error dan menyimpan pesan error tersebut pada file sementara `message.csv.csv`<br>
+    
+   Dengan menggunakan metode yang sama namun menggunakan `tr -d '[0-9]' ` untuk tidak mengambil data berupa angka dan menggunakan `sed -e 's/^[[:space:]]*//' > message.csv` untuk menghapus spasi pada awal kalimat pesan error dan menyimpan pesan error tersebut pada file sementara `message.csv.csv`<br>
+ 
     ```
-     paste message.csv counter.csv | while IFS="$(printf '\t')" read -r f1 f2
+       paste message.csv counter.csv | while IFS="$(printf '\t')" read -r f1 f2
     ```
-  Syntax di atas digunakan untuk menyalin data pada file `message.csv` dan `counter.csv` lalu setiap file tersebut disimpan sebagai `f1` dan `f2`<br>
+    
+   Syntax di atas digunakan untuk menyalin data pada file `message.csv` dan `counter.csv` lalu setiap file tersebut disimpan sebagai `f1` dan `f2`<br>
     ```
-     do
-       printf "$f1,$f2\n"
-     done >> error_message.csv
+       do
+         printf "$f1,$f2\n"
+       done >> error_message.csv
     ```
     `printf "$f1,$f2\n"` digunakan untuk menampilkan data `f1` dan `f2` yang dibatasi oleh koma setelah itu data dimasukkan ke dalam file `error_message.csv`<br>
-    Hapus file sementara yang sudah tidak dibutuhkan dengan menggunakan `rm message.csv` dan `rm counter.csv`. Tampilan pada file `error_message.csv` terlihat sebagai berikut: <br>
-    ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20csv%201d.png)<br>
+       Hapus file sementara yang sudah tidak dibutuhkan dengan menggunakan `rm message.csv` dan `rm counter.csv`. Tampilan pada file `error_message.csv` terlihat sebagai berikut: <br>
+   
+   ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20csv%201d.png)<br>
     
  - **Penjelasan dan Penyelesaian Soal 1e**<br>
  Pada soal 1e kita diminta untuk membuat file yang berisi data pada poin c yang sudah disatukan dalam file `user_statistic.csv` dengan header Unsername,INFO,ERROR dan diurutkan berdasarkan username secara ascending.<br>
