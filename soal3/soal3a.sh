@@ -1,10 +1,9 @@
 #!/bin/bash
 #soal3a.sh
 
-count=46
 image=1
 
-for((i=1;i<=count && image<=23;i=i+1))
+for((i=1;image<=23;i=i+1))
 do
     duplicate=0
 
