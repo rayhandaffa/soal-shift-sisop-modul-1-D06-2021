@@ -250,6 +250,17 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   Program ini dijalankan berulang kali hingga total 23 gambar telah diperoleh. Serta, output log dapat dilihat dalam file Foto.log.
  
 - **Penjelasan dan Penyelesaian Soal 3b**<br>
+  Pada program soal3b.sh ini, digunakan script seperti soal3a.sh. Namun ditambahkan sedikit modifikasi agar file gambar yang di-unduh beserta log-nya disimpan dalam folder dengan nama tanggal unduhnya dengan format "DD-MM-YYYY" (contoh : "13-03-2023").
+
+Dibuat sebuah variable `Date` untuk menampung tanggal pada hari ini dengan format "DD-MM-YYYY".
+```
+Date=$(date +'%d-%m-%Y')
+```
+Berikutnya, buat sebuah folder/direktori dengan nama tanggal pada hari ini yang telah tersimpan dalam variable `Date`.
+```
+mkdir "$Date"
+```
+Lalu, ubah direktori saat ini ke dalam folder "Date" dan eksekusi script yang sama seperti pada soal3a.sh. File gambar beserta log-nya dapat terunduh dan tersimpan di folder tanggal saat ini.
 
 - **Penjelasan dan Penyelesaian Soal 3c**<br>
 
