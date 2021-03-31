@@ -255,4 +255,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
 
 - **Penjelasan dan Penyelesaian Soal 3d**<br>
 
-  ### **Kendala yang di alami dalam mengerjakan soal 3** 
+ ### **Kendala yang di alami dalam mengerjakan soal 3**<br>
+ Terdapat beberapa kendala yang kami alami saat mengerjakan soal no 3 yaitu :
+ 1. Pada saat mengerjakan soal3a.sh terdapat error seperti file gambar yang telah di-download tidak mencapai 23 file.
+ 2. Pada saat mengerjakan soal3a.sh selanjutnya telah terdapat perbaikan, namun kurang efisien karena masih mendownload sampai 46 file. Sehingga dilakukan perbaikan agar download secukupnya hingga target 23 file tercapai.
