@@ -6,8 +6,13 @@ Kelompok :
 3. Rayhan Daffa Alhafish - 05111940000227
 
 ## Penjelasan dan Penyelesaian Soal 1
- - **Penjelasan dan Penyelesaian Soal 1a**<br>
- 
+Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat kita ambil datanya berdasarkan beberapa kondisi antara lain akan dijelaskan dalam penjelasan soal<br>
+- **Penjelasan dan Penyelesaian Soal 1a**<br>
+  Pada soal 1a kita diminta untuk menampilkan informasi jenis log, pesan log, dan username pada setiap baris lognya dari file sylog.log dengan menggunakan regex.<br>
+ ```
+  cat syslog.log | cut -f6- -d' '
+ ```
+ Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, namun karena terdapat beberapa data yang tidak perlu dimunculkan, dan data yang perlu dimunculkan merupakan kata ke-6 sampai akhir line maka digunakan syntax `cut -f6- -d' '` untuk memotong bagian yang ingin ditampilkan. Syntax tersebut bekerja dengan cara hanya mengambil data dari `f6` sampai akhil line dimana setiap `f` dibatasi dengan spasi.<br>
  - **Penjelasan dan Penyelesaian Soal 1b**<br>
  
  - **Penjelasan dan Penyelesaian Soal 1c**<br>
@@ -107,7 +112,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
 
    ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/hasil%2Ctxt.jpg)<br>
    
-     Di akhir setiap program pada nomer 2a, 2b, 2c, maupun 2d terdapat sebuah syntax `Laporan-TokoShisop.tsv >> hasil.txt` output semua soal 2 akan ditampilkan pada file `hasil.txt` dengan melakukan redirection untuk mengirim oitput ke file `hasil.txt`. 
+     Di akhir setiap program pada nomer 2a, 2b, 2c, maupun 2d terdapat sebuah syntax `Laporan-TokoShisop.tsv >> hasil.txt` output semua soal 2 akan ditampilkan pada file `hasil.txt` dengan melakukan redirection untuk mengirim output ke file `hasil.txt`. 
 ## Penjelasan dan Penyelesaian Soal 3
 - **Penjelasan dan Penyelesaian Soal 3a**<br>
   Pada program ini, pertama-tama, dibuat dua variabel yang menyatakan jumlah download maksimum dan nomor gambar. Berikutnya dilakukan iterasi selama belum mencapai banyak download maksimum dan selama gambar kurang dari 23.
