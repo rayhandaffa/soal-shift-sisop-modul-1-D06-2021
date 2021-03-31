@@ -222,9 +222,11 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
  5. Error yang terakhir yang kami alami yaitu ketika mem*print* hasil program nomer 2d salah menggunakan `$d` yang seharusnya `"%.1f` ketika memprint profitMinimum. 
 ## Penjelasan dan Penyelesaian Soal 3
 - **Penjelasan dan Penyelesaian Soal 3a**<br>
-  Pada program ini, pertama-tama, dibuat dua variabel yang menyatakan jumlah download maksimum dan nomor gambar. Berikutnya dilakukan iterasi selama belum mencapai banyak download maksimum dan selama gambar kurang dari 23.
+  Pada program ini, pertama-tama, dibuat sebuah variabel yang menyatakan nomor gambar, dimulai dari nomor 1. Berikutnya dilakukan iterasi selama gambar kurang dari 23.
   ```
-  for((i=1;i<=count && image<=23;i=i+1))
+  image=1
+  
+  for((i=1;image<=23;i=i+1))
   do
   ```
   Untuk mendownload file gambar pada link tersebut, digunakan command `wget`, kemudian log hasil gambar tadi diatur sedemikian agar disimpan dalam file Foto.log, serta beri nama file gambar tersebut dengan newKitten.
@@ -245,7 +247,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
       image=$((image+1))
   fi
   ```
-  Program ini dijalankan berulang kali hingga total 23 gambar telah diperoleh dan ketika jumlah download maksimum telah tercapai.
+  Program ini dijalankan berulang kali hingga total 23 gambar telah diperoleh. Serta, output log dapat dilihat dalam file Foto.log.
  
 - **Penjelasan dan Penyelesaian Soal 3b**<br>
 
