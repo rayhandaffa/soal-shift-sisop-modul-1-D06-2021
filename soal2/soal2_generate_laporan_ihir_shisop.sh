@@ -76,6 +76,6 @@ END {
            regionMinimum = region
         }
     }
-printf("\nWilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah %s dengan total keuntungan %.1f\n", region ,profitMinimum);
+printf("\nWilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah %s dengan total keuntungan %.1f\n", region, listGabungan[region]);
 #printf("%.1f", listGabungan[region]);
 }' /home/rayhandapis/Downloads/Laporan-TokoShiSop.tsv >> hasil.txt
