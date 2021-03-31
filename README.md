@@ -112,7 +112,12 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
  Setelah data terkumpul, dilakukan nested looping untuk membandingkan username pada `user.csv` dengan file `usererror.csv` dan `userinfo.csv`. Jika barisnya memiliki data yang sama, variable yang menyimpan jumlah info dan error akan diubah berdasarkan pada file `countererror.csv` dan `counterinfo.csv`. Lalu data dimasukkan secara urut ke dalam file `user_statistic.csv`. Setelah seluruh data dimasukkan ke dalam file, hapus semua file sementara yang sudah tidak dibutuhkan. Tampilan pada file `user_statistic.csv` terlihat sebagai berikut:<br>
    ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20csv%201e.png)
  
-### **Kendala yang di alami selama mengerjakan soal 2**<br> 
+### **Kendala yang di alami selama mengerjakan soal 1**<br> 
+Terdapat beberapa kendala yang dialami saat mengerjakan soal no 1 yaitu :
+1. Pada saat pengerjaan soal 1d terdapat error karena digunakannya `grep -o` untuk mencari setiap pesan error yang terdapat pada data lalu tiap line diakhiri dengan menampilkan jumlah kemunculannya, namun cara ini tidak berhasil untuk mengurutkan kemunculan data berdasarkan banyaknya pesan error dari pesan error terbanyak.
+2. Pada saat pengerjaan soal 1e terdapat kesalahan ketika mengurutkan nama user secara ascending namun kami mengurutkan data berdasarkan kemunculan terbanyak.
+3. Pada saat pengerjaan soal 1d dan 1e dikarenakan dapat menggunakan data dari hasil pengerjaan soal 1b dan 1c kami berencana mengubahnya menjadi suatu variable, namun cara tersebut tidak berhasil.
+
 ## Penjelasan dan Penyelesaian Soal 2
 Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dapat kita ambil datanya berdasarkan beberapa kondisi antara lain akan dijelaskan dalam penjelasan soal<br>
  - **Penjelasan dan Penyelesaian Soal 2a**<br> 
@@ -209,7 +214,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
      Di akhir setiap program pada nomer 2a, 2b, 2c, maupun 2d terdapat sebuah syntax `Laporan-TokoShisop.tsv >> hasil.txt` output semua soal 2 akan ditampilkan pada file `hasil.txt` dengan melakukan redirection untuk mengirim output ke file `hasil.txt`. 
      
  ### **Kendala yang di alami selama mengerjakan soal 2**<br> 
- Terdapat beberapa kendala yang kami alami saat mengerjakan soal no 2 kali yaitu :
+ Terdapat beberapa kendala yang kami alami saat mengerjakan soal no 2 yaitu :
  1. Pada saat mengerjakan soal no 2a kami mengalami beberapa error yaitu ketidaksesuaian saat meng-*run* program yang seharusnya 9952 dengan 100% malah 9964 dan tidak keluar hasil persenannya.
  2. Selanjutnya, kami mengalami error ketika menjalankan program 2b karena kami pada soal 2a memakai `\home\rayhandapis\Documents\PraktikumSisop\M1 >> hasil.txt` yang dimana seharusnya menggunakan tanda `>` saja sehingga tidak me-*replace* yang sudah ada.
  3. Kemudian pada saat mengerjakan soal no 2b, terdapat error yaitu ketika salah meng*print* hasil yaitu seharusnya hanya beberapa nama yang memiliki data di Kota `Albuquerque` dan pada tahun 2017. Hal ini disebabkan karena terjadinya kesalahan penulisan `City` yang seharusnya `Albuquerque` kami menulisnya `Albequerque`.
@@ -248,4 +253,4 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
 
 - **Penjelasan dan Penyelesaian Soal 3d**<br>
 
-### **Kendala yang di alami dalam mengerjakan soal 3** 
+  ### **Kendala yang di alami dalam mengerjakan soal 3** 
