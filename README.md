@@ -14,10 +14,24 @@ Pada soal ini terdapat sebuah file syslog.log yang berisi data-data yang dapat k
  ```
  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, namun karena terdapat beberapa data yang tidak perlu dimunculkan, dan data yang perlu dimunculkan merupakan kata ke-6 sampai akhir line maka digunakan syntax `cut -f6- -d' '` untuk memotong bagian yang ingin ditampilkan. Syntax tersebut bekerja dengan cara hanya mengambil data dari `f6` sampai akhil line dimana setiap `f` dibatasi dengan spasi.<br>
  - **Penjelasan dan Penyelesaian Soal 1b**<br>
- 
+   Pada soal 1b kita diminta untuk menampilkan jumlah pesan ERROR beserta banyak kemunculannya.<br>
+    ```
+    cat syslog.log | grep "ERROR" | cut -d' ' -f7- | cut -d'(' -f1 | sort | uniq -c
+    ```
+   Berdasarkan syntax diatas, pengerjaan 1b ini mirip dengan 1a namun hanya menampilkan yang error saja oleh karena itu digunakan syntax `grep "ERROR"` dimana nantinya data yang dimunculkan hanya data yang memiliki tulisan "ERROR". Selain itu digunakan syntax ` cut -d' ' -f7- | cut -d'(' -f1 ` dikarenakan posisi keterangan ERROR terdapat pada kata ke-7 sampai dengan sebelum tanda kurung buka, maka selain dibuat batasan di awal, dibuat juga batasan di akhir dimana kata terakhir yang di ambil merupakan kata sebelum tanda kurung buka.<br>
+   Lalu digunakan `sort` unntuk mengurutkan data, agar nantinya data yang memiliki pesan error yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`.<br>
+
  - **Penjelasan dan Penyelesaian Soal 1c**<br>
- 
+  Pada soal 1c kita diminta untuk menampilkan log ERROR dan INFO yang terdapat pada setiap usernya.<br>
+  Pertama-tama data yang ditampilkan merupakan jumlah ERROR pada setiap user<br>
+  ```
+  cat syslog.log | grep "ERROR" | cut -d'(' -f2- | cut -d')' -f1 | sort | uniq -c
+  ```
+  Pada syntax diatas terdapat `cat syslog.log` untuk menampilkan isi file, digunakan `grep "ERROR"` karena hanya akan mengambil data errornya saja, lalu dilanjutkan dengan ` cut -d'(' -f2- | cut -d')' -f1 ` untuk mengambil data username saja, karena data username terletak didalam kurung setelah itu digunakan `sort` unntuk mengurutkan data, agar nantinya data error dengan username yang sama dapat dihitung dan hitungan disimpan dengan menggunakan syntax `uniq -c`.<br>
+
  - **Penjelasan dan Penyelesaian Soal 1d**<br>
+ 
+ - **Penjelasan dan Penyelesaian Soal 1e**<br>
  
 ## Penjelasan dan Penyelesaian Soal 2
 Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dapat kita ambil datanya berdasarkan beberapa kondisi antara lain akan dijelaskan dalam penjelasan soal<br>
