@@ -275,7 +275,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   ```
 
   Apabila hari ini tanggal ganjil maka `Mod` bernilai satu dan akan dibuat folder untuk Kucing (contoh : "Kucing_13-03-2023"), sedangkan apabila genap maka `Mod` bernilai nol dan akan dibuat folder untuk Kelinci (contoh : "Kelinci_14-03-2023"). Berikut ini adalah code rincian untuk membuat direktorinya.
-
+  ```
   if [ $Mod -eq 1 ]
   then
       # Kucing_
@@ -288,7 +288,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
       mkdir "Kelinci_$Date"
       cd "Kelinci_$Date"
   fi
-
+  ```
   Untuk code selanjutnya sama dengan program soal3b.sh.
   Berikut ini adalah screenshot hasil direktori yang telah didapatkan.
 
