@@ -263,6 +263,8 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   mkdir "$Date"
   ```
   Lalu, ubah direktori saat ini ke dalam folder "Date" dan eksekusi script yang sama seperti pada soal3a.sh. File gambar beserta log-nya dapat terunduh dan tersimpan di folder tanggal saat ini.
+  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3b.sh.png)<br>
+  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3b.Foto.log.png)<br>
 
 - **Penjelasan dan Penyelesaian Soal 3c**<br>
 
