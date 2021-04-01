@@ -248,6 +248,8 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   fi
   ```
   Program ini dijalankan berulang kali hingga total 23 gambar telah diperoleh. Serta, output log dapat dilihat dalam file Foto.log.
+  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3a.sh.png)<br>
+  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3a.Foto.log.png)<br>
  
 - **Penjelasan dan Penyelesaian Soal 3b**<br>
   Pada program soal3b.sh ini, digunakan script seperti soal3a.sh. Namun ditambahkan sedikit modifikasi agar file gambar yang di-unduh beserta log-nya disimpan dalam folder dengan nama tanggal unduhnya dengan format "DD-MM-YYYY" (contoh : "13-03-2023").
