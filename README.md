@@ -291,6 +291,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   ```
   Untuk code selanjutnya sama dengan program soal3b.sh.
   Berikut ini adalah screenshot hasil direktori yang telah didapatkan.
+  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3c.sh%20with%20Foto.log.png)<br>
 
 - **Penjelasan dan Penyelesaian Soal 3d**<br>
   Pada program soal3d.sh ini, diperlukan untuk mengamankan atau membuat script yang akan memindahkan seluruh folder ke zip yang diberi nama "Koleksi.zip" dan memberi password berupa tanggal pada hari ini dengan format "MMDDYYYY" (contoh : “03032003”).
@@ -318,6 +319,7 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   fi
   ```
   Berikut ini adalah screenshot hasil memindahkan folder ke zip.
+  ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3d.sh%20with%20Foto.log.png)<br>
 
 
  ### **Kendala yang di alami dalam mengerjakan soal 3**<br>
