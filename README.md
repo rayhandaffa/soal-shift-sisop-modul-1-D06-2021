@@ -267,10 +267,62 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
   ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3b.Foto.log.png)<br>
 
 - **Penjelasan dan Penyelesaian Soal 3c**<br>
+  Pada program soal3c.sh ini, diperlukan untuk mengunduh gambar kucing dan kelinci secara bergantian (yang pertama bebas. contoh : tanggal 30 kucing > tanggal 31 kelinci > tanggal 1 kucing > ... ). Oleh karena itu, ditambahkan suatu program untuk mengecek apakah hari ini tanggal ganjil atau genap sebagai berikut.
+  ```
+  Divisor=2
+  Day=$(date -d "$D" '+%d')
+  let Mod=$Day%$Divisor
+  ```
+
+  Apabila hari ini tanggal ganjil maka `Mod` bernilai satu dan akan dibuat folder untuk Kucing (contoh : "Kucing_13-03-2023"), sedangkan apabila genap maka `Mod` bernilai nol dan akan dibuat folder untuk Kelinci (contoh : "Kelinci_14-03-2023"). Berikut ini adalah code rincian untuk membuat direktorinya.
+
+  if [ $Mod -eq 1 ]
+  then
+      # Kucing_
+      Date=$(date +'%d-%m-%Y')
+      mkdir "Kucing_$Date"
+      cd "Kucing_$Date"
+  else
+      # Kelinci_
+      Date=$(date +'%d-%m-%Y')
+      mkdir "Kelinci_$Date"
+      cd "Kelinci_$Date"
+  fi
+
+  Untuk code selanjutnya sama dengan program soal3b.sh.
+  Berikut ini adalah screenshot hasil direktori yang telah didapatkan.
 
 - **Penjelasan dan Penyelesaian Soal 3d**<br>
+  Pada program soal3d.sh ini, diperlukan untuk mengamankan atau membuat script yang akan memindahkan seluruh folder ke zip yang diberi nama "Koleksi.zip" dan memberi password berupa tanggal pada hari ini dengan format "MMDDYYYY" (contoh : “03032003”).
+
+  Cara untuk memindahkan seluruh folder ke zip dapat dilakukan dengan script bash sebagai berikut.
+  ```
+  DatePass=$(date +'%d%m%Y')
+  zip -P "$DatePass" -r Koleksi.zip "Kucing_$Date"
+  ```
+  DatePass berisi password untuk tanggal hari ini. Dan command `zip -P` berfungsi untuk memberi password melalui command line, sedangkan `-r` berarti mengkompresi file-file di dalamnya secara rekursif.
+
+  Untuk lebih lengkapnya, berikut ini adalah script bash untuk mengkompresi direktori Kucing maupun Kelinci sesuai tanggal pada hari ini.
+  ```
+  cd -
+
+  if [ $Mod -eq 1 ]
+  then
+      # Kucing_
+      DatePass=$(date +'%d%m%Y')
+      zip -P "$DatePass" -r Koleksi.zip "Kucing_$Date"
+  else
+      # Keclinci_
+      DatePass=$(date +'%d%m%Y')
+      zip -P "$DatePass" -r Koleksi.zip "Kelinci_$Date"
+  fi
+  ```
+  Berikut ini adalah screenshot hasil memindahkan folder ke zip.
+
 
  ### **Kendala yang di alami dalam mengerjakan soal 3**<br>
  Terdapat beberapa kendala yang kami alami saat mengerjakan soal no 3 yaitu :
  1. Pada saat mengerjakan soal3a.sh terdapat error seperti file gambar yang telah di-download tidak mencapai 23 file.
  2. Pada saat mengerjakan soal3a.sh selanjutnya telah terdapat perbaikan, namun kurang efisien karena masih mendownload sampai 46 file. Sehingga dilakukan perbaikan agar download secukupnya hingga target 23 file tercapai.
+ 3. Pada saat mengerjakan soal3c.sh sempat mengalami kesalahan pada sintaks yang menyebabkan program menjadi error.
+ 4. Pada saat mengerjakan soal3d.sh mengalami kesalahan direktori untuk kompresi sehingga kompresi tidak dapat dilakukan.
