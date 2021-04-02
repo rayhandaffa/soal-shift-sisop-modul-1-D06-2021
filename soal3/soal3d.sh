@@ -24,7 +24,14 @@ for((i=1;image<=23;i=i+1))
 do
     duplicate=0
 
-    wget "https://loremflickr.com/320/240/kitten" -a Foto.log -O newKitten
+    if [ $Mod -eq 1 ]
+    then
+        # Kucing_
+        wget "https://loremflickr.com/320/240/kitten" -a Foto.log -O newKitten
+    else
+        # Kelinci_
+        wget "https://loremflickr.com/320/240/bunny" -a Foto.log -O newKitten  
+    fi
 
     if [ $i -eq 1 ]
     then
