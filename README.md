@@ -289,6 +289,17 @@ Pada soal ini terdapat sebuah file TokoShisop.tsv yang berisi data-data yang dap
       cd "Kelinci_$Date"
   fi
   ```
+  Dan juga pada bagian untuk mengunduh file, dilakukan program untuk pengecekan. Jika hari ini tanggal ganjil yang mana `Mod` bernilai satu, maka gambar kucing diunduh. Sebaliknya, jika `Mod` bernilai selain 1, maka gambar kelinci diunduh.
+  ```
+  if [ $Mod -eq 1 ]
+  then
+      # Kucing_
+      wget "https://loremflickr.com/320/240/kitten" -a Foto.log -O newKitten
+  else
+      # Kelinci_
+      wget "https://loremflickr.com/320/240/bunny" -a Foto.log -O newKitten  
+  fi
+  ```
   Untuk code selanjutnya sama dengan program soal3b.sh.
   Berikut ini adalah screenshot hasil direktori yang telah didapatkan.
   ![ssshift1](https://github.com/rayhandaffa/soal-shift-sisop-modul-1-D06-2021/blob/main/ss%20shift1/ss%20soal3c.sh%20with%20Foto.log.png)<br>
